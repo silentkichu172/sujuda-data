@@ -1,0 +1,14 @@
+name: Check masjid list
+
+# Runs on every change. A red X means the app would ignore this version of
+# the list (users keep the last good one) - open the run to see what's wrong.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/check_masjids.py masjids.json
